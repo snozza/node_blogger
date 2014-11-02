@@ -1,0 +1,28 @@
+{
+  "name": "node_blogger",
+  "version": "1.0.0",
+  "description": "Blogging Platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snozza/node_blogger.git"
+  },
+  "keywords": [
+    "blog",
+    "node",
+    "posts"
+  ],
+  "author": "Andrew Snead",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snozza/node_blogger/issues"
+  },
+  "homepage": "https://github.com/snozza/node_blogger",
+  "dependencies": {
+    "ejs": "^1.0.0"
+  }
+}

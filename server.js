@@ -1,9 +1,13 @@
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
 
 function makeNewPost(request, response) {
-  response.writeHead(200, {'Content-type': 'text/plain'});
-  response.end('Node Blogger - Make a new post');
+  var filepath = 'views/posts/new.html';
+  fs.readFile(filepath, 'utf8', function(error, view) {
+    response.writeHead(200, {'Content-type': 'text/html'});
+    response.end(view);
+  });
 }
 
 function error404(request, response) { 

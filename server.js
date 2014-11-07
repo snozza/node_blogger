@@ -1,63 +1,68 @@
 var http = require('http');
-var url = require('url');
-var fs = require('fs');
-var path = require('path');
-var querys = require('querystring');
+var utils = require('util');
+var utilsHttp = require('utilsHttp');
+var Router = require('./router');
+var DataBase = require('./mockDB');
 
+var blog = new DB();
+var router = new Router();
 
-function makeNewPostForm(req, res) {
-  var filepath = 'views/posts/new.html';
-  fs.readFile(filepath, 'utf8', function(error, view) {
-    if (error) console.log(error);
-    res.writeHead(200, {'Content-type': 'text/html'});
-    res.end(view);
-  });
-}
+router.get('^posts/?$', function(req res) {
+  var options = {posts: blog.posts()};
+  utilsHttp.renderHtml('post/list.html', res, options)
+});
 
-function submitNewPost(req, res) {
-  parser(req, function(data) {
+router.get('^/posts/(\\d+)$', function(req, res, params) {
+  var post = blog.get(params[0]);
+  if (!post) utilsHttp.render404(res);
+  var options = {locals: {post: post}};
+  utilsHttp.renderHTML('posts/show.html', res, options);
+})
+
+router.get('^/posts/new/?$', function(req, res) {
+  var options = {};
+  utilsHttp.renderHtml('post/new.html'), res, options);
+});
+
+router.post('^/posts/?$', function(req, res) {
+  utilsHttp.parser(req, function(body) {
     var post = {
-      title: data.title,
-      content: data.body
+        title: body.title,
+        content: body.content
     }
-  })
-  response.end();
-}
-
-function postBase(req, res) {
-  var filepath = 'views/posts/posts.html'
-  fs.readFile(filepath, 'utf8', function(error, view) {
-    if (error) console.log(error);
-    res.writeHead(200, {'Content-type': 'text/html'});
-    res.end(view);
+    blog.add(post)
+    utilsHttp.redirect('/posts', res);
   });
-}
+});
 
-function parser(req, cBack) {
-  var content = '';
-  request.on('data', function(chunk) {
-    body += chunk;
-  });
-  request.on('end', function() {
-    cBack(querys.parse(body))
-  });
-}
+// DELETE
+router.post('^/posts/(\\d+)/edit', function(req, res, params) {
+  var id = params[0];
+  if (!blog.get(id)) blog.remove(id);
+  utilsHttp.redirect('/posts', res);
+});
 
-function addCSS(req, res) {
-  fs.readFile('public/css/style.css', function(error, data) {
-    if (error) console.log(error);
-    res.writeHead(200, {'Content-type': 'text/css'}); 
-    res.end(data);
-  });
-}
 
-function error404(req, res) { 
-  res.writeHead(404);
-  res.end('Whoops....404 - page not found');
-}
+// UPDATE FORM
+router.get('^/posts/(\\d+)/edit', function(req, res, params) {
+  var post = blog.get(params[0]);
+  if (!post) utilsHttp.render404(res);
+  var options = {locals: {post: post}};
+  utilsHttp.renderHtml('post/edit.html', res, options);
+});
 
-var postFormPattern = /^\/posts\/new\/?$/;
-var postPattern = /^\/posts\/?$/;
+router.post('^/posts/(\\d+)/edit', function(req, res, params) {
+  var id = params[0];
+  if (!blog.get(id)) utilsHttp.render404(res);
+
+  utilsHttp
+
+
+
+
+
+
+
 
 var server = http.createServer(function(req, res) {
   var pathname = url.parse(req.url).pathname;

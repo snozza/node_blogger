@@ -1,9 +1,20 @@
-<form method='post' action '/posts' id='new-post'>
-    <label for="title">Title</label><br>
-    <input type='text' id='title' name='tile-content'
-      placeholder='Title'><br>
-    <label for='body'>Post</label><br>
-    <textarea type='text' cols='40' rows='20' id='body' name='body-content'>
-    </textarea>
-    <input type='submit' value='Submit!'>
-</form>
+<html>
+  <head>
+    <title>Missing title</title>
+    <link href='style.css' rel='stylesheet' type='text/css' />  
+  </head>
+  <body>    
+    <form method='post' action='/posts' id='new-post'>
+        <label for="title">Title</label><br>
+        <input type='text' id='title' name='title'
+          placeholder='Title'><br>
+        <label for='body'>Post</label><br>
+        <textarea type='text' cols='40' rows='20' id='content' name='content'>
+        </textarea>
+        <input type='submit' value='Submit!'>
+    </form>
+    <br>
+    <a href="/posts">Back</a>
+      
+  </body>
+</html>

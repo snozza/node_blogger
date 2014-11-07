@@ -1,6 +1,7 @@
 var path = require('path');
 var url = require('url');
 var fs = require('fs');
+var mime = require('mime');
 var utilsHttp = require('./utilsHttp');
 
 function Router() {
@@ -26,13 +27,18 @@ Router.prototype.post = function(route, cBack) {
 
 Router.prototype.transmit = function(req, res) {
   var pathname = url.parse(req.url).pathname;
+  // console.log(pathname)
   var method = req.method;
   var routes = this.routes[method] || [];
   for (var i = 0; i < routes.length; i++) {
     var route = routes[i][0];
+    // console.log(route)
     var cBack = routes[i][1];
+    // console.log(cBack.toString())
     var m = route.exec(pathname);
-    console.log(m) {
+    // console.log(m);
+    if (m) {
+      // console.log(m.slice(1));
       cBack(req, res, m.slice(1));
       return;
     }
@@ -40,11 +46,11 @@ Router.prototype.transmit = function(req, res) {
 
   var filepath = path.join(this.staticDir, pathname);
   fs.readFile(filepath, function(error, data) {
-    if (error) utilsHttp.render404(res);
+    if (error) utilsHttp.error404(res);
     var type = mime.lookup(pathname);
     res.writeHead(200, {"Content-Type": type});
     res.end(data);
   });
 };
 
-module.export = Router;
+module.exports = Router;

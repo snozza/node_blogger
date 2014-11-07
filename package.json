@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/snozza/node_blogger",
   "dependencies": {
-    "ejs": "^1.0.0"
+    "ejs": "^1.0.0",
+    "mime": "^1.2.11"
   }
 }

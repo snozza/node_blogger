@@ -22,7 +22,7 @@ DB.prototype.get = function(id) {
   return this.db[id];
 };
 
-DB.protoype.posts = function() {
+DB.prototype.posts = function() {
   var posts = [];
   for (var id in this.db) {
     posts.push(this.db[id]);

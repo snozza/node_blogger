@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lange='en'>
+<head>
+  <meta charset='utf-8'>
+
+  <title> Blog Posts </title>
+  
+<link href='style.css' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+
+  <section id='container'>
+      <section id='blog_header'> </section>
+        <article class='post_container' >
+          <h1>Listing posts</h1>
+            <table>
+                <tr>
+                  <th>Title</th>
+                  <th>Content</th>
+                  <th colspan="3"></th>
+                </tr>
+                <% posts.forEach(function(post){ %>
+                  <tr>
+                    <td><%= post.title %></td>
+                    <td><%= post.content %></td>
+                    <td><a href="/posts/<%= post.id %>">Show</a></td>
+                    <td><a href="/posts/<%= post.id %>/edit/">Edit</a></td>
+                    <td>
+                      <form action="/posts/<%= post.id %>/delete/" name="delete_post_<%= post.id %>" method="post">
+                        <a href="javascript:deletePost('delete_post_<%= post.id %>');">Delete</a>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+          </table>
+          <br/>
+<a href="/posts/new/">New Post</a>
+
+
+        </article>
+        <nav  id='sidebar' ></nav> 
+      </section>
+    <!--   <div  class=Layout3_3 ></div>
+      <div  class=Layout3_4 ></div>
+      <div  class=Layout3_5 ></div> -->
+  </section>
+
+

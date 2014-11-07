@@ -1,0 +1,50 @@
+body {
+    font-family: Helvetica, Arial, Sans-serif;
+}
+
+html, body {
+    height: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container{      
+    white-space: nowrap;
+    width: 90%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+.post_container{ 
+    width:60%; 
+    height: inherit;
+    background-color:Red;   
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+     margin-right: -4px;
+    
+}            
+#sidebar{ 
+    width: 30%; 
+    background-color: Blue; 
+    height: inherit;
+    text-align: right;
+    display: inline-block;
+    vertical-align: top;
+   
+
+  }
+
+#blog_header{ 
+    background-color: Yellow; 
+    width: 90%; 
+    height: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}  
+

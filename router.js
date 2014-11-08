@@ -26,19 +26,15 @@ Router.prototype.post = function(route, cBack) {
 };
 
 Router.prototype.transmit = function(req, res) {
+  req.url
   var pathname = url.parse(req.url).pathname;
-  // console.log(pathname)
   var method = req.method;
   var routes = this.routes[method] || [];
   for (var i = 0; i < routes.length; i++) {
-    var route = routes[i][0];
-    // console.log(route)
-    var cBack = routes[i][1];
-    // console.log(cBack.toString())
-    var m = route.exec(pathname);
-    // console.log(m);
+    var route = routes[i][0];  
+    var cBack = routes[i][1];  
+    var m = route.exec(pathname);  
     if (m) {
-      // console.log(m.slice(1));
       cBack(req, res, m.slice(1));
       return;
     }
@@ -48,6 +44,7 @@ Router.prototype.transmit = function(req, res) {
   fs.readFile(filepath, function(error, data) {
     if (error) utilsHttp.error404(res);
     var type = mime.lookup(pathname);
+    console.log(pathname);
     res.writeHead(200, {"Content-Type": type});
     res.end(data);
   });

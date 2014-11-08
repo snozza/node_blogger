@@ -15,9 +15,9 @@ router.get('^/posts/?$', function(req, res) {
 
 router.get('^/posts/(\\d+)$', function(req, res, params) {
   var post = blog.get(params[0]);
-  if (!post) utilsHttp.render404(res);
+  if (!post) utilsHttp.error404(res);
   var options = {locals: {post: post}};
-  utilsHttp.renderHTML('posts/show.html', res, options);
+  utilsHttp.renderHtml('posts/show.html', res, options);
 })
 
 router.get('^/posts/new/?$', function(req, res) {
@@ -39,7 +39,7 @@ router.post('^/posts/?$', function(req, res) {
 // DELETE
 router.post('^/posts/(\\d+)/delete/?$', function(req, res, params) {
   var id = params[0];
-  if (!blog.get(id)) blog.remove(id);
+  if (blog.get(id)) blog.remove(id);
   utilsHttp.redirect('/posts', res);
 });
 
@@ -47,7 +47,7 @@ router.post('^/posts/(\\d+)/delete/?$', function(req, res, params) {
 // UPDATE FORM
 router.get('^/posts/(\\d+)/edit', function(req, res, params) {
   var post = blog.get(params[0]);
-  if (!post) utilsHttp.render404(res);
+  if (!post) utilsHttp.error404(res);
   var options = {locals: {post: post}};
   utilsHttp.renderHtml('posts/edit.html', res, options);
 });

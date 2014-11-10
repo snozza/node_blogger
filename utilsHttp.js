@@ -21,7 +21,6 @@ utilsHttp.parser = function(req, cBack) {
   var body = "";
   req.on('data', function(chunk) {
     body += chunk;
-    console.log(body)
   });
   req.on('end', function() {
     cBack(queryStr.parse(body));

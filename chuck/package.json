@@ -1,0 +1,11 @@
+{
+  "name": "chuck",
+  "version": "1.0.0",
+  "description": "Chuck Norris Joke API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Andrew Snead",
+  "license": "MIT"
+}

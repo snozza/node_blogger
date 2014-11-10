@@ -9,7 +9,6 @@ var router = new Router();
 
 router.get('^/posts/?$', function(req, res) {
   var options = {posts: blog.posts()};
-  console.log(blog.posts())
   utilsHttp.renderHtml('posts/list.html', res, options)
 });
 

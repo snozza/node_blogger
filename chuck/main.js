@@ -16,8 +16,7 @@ Norris.prototype.random = function(num) {
 Norris.prototype.joke = function(route, callBack) {
   return this._value(route, function(err, data) {
     if(err) {
-      // return callBack(err);
-      console.log(err)
+      return callBack(err);
     } else {
       return callBack(null, data.joke.replace(/&quot;/g, '"'));
     }
@@ -30,6 +29,7 @@ Norris.prototype._value = function(route, callBack) {
       // return callBack(err);
       console.log(err);
     } else {
+      console.log(data);
       return callBack(null, data.value);
     }
   });
@@ -62,9 +62,9 @@ Norris.prototype._req = function(route, callBack) {
   });
 };
 
-chuck = new Norris()
+chuck = new Norris;
 chuck.random(function(err, joke) {
   return console.log(err ? err.message : joke);
 });
 
-module.export = Norris
+module.export = Norris;

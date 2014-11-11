@@ -41,7 +41,7 @@ html, body {
   }
 
 #blog_header{ 
-    background-color: Yellow; 
+    background-color: rgb(0, 255, 207); 
     width: 90%; 
     height: 30%;
     margin-left: auto;

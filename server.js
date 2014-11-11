@@ -4,8 +4,10 @@ var utilsHttp = require('./utilsHttp');
 var Router = require('./router');
 var DataBase = require('./mockDB');
 
+
 var blog = new DataBase();
 var router = new Router();
+
 
 router.get('^/posts/?$', function(req, res) {
   var options = {posts: blog.posts()};

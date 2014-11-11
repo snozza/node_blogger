@@ -26,10 +26,8 @@ Norris.prototype.joke = function(route, callBack) {
 Norris.prototype._value = function(route, callBack) {
   return this._req(route, function(err, data) {
     if (err) {
-      // return callBack(err);
-      console.log(err);
+      return callBack(err);
     } else {
-      console.log(data);
       return callBack(null, data.value);
     }
   });
@@ -62,9 +60,4 @@ Norris.prototype._req = function(route, callBack) {
   });
 };
 
-chuck = new Norris;
-chuck.random(function(err, joke) {
-  return console.log(err ? err.message : joke);
-});
-
-module.export = Norris;
+module.exports = Norris;

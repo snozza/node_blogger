@@ -1,0 +1,6 @@
+#!/usr/bin/env coffee
+Chuck = require ('../main')
+joke = new Chuck()
+joke.random(function(err, joke) {
+  return console.log(err ? err.message : joke);
+});

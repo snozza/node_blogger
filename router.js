@@ -4,6 +4,14 @@ var fs = require('fs');
 var mime = require('mime');
 var utilsHttp = require('./utilsHttp');
 
+// var Chuck = require('./chuck')
+
+// var runChuck = function(response) {
+//   return new Chuck().random(function (err, joke) {
+//     return response.end(err ? err.message : joke);
+//   });
+// }
+
 function Router() {
   this.routes = {}
   this.staticDir = path.join(__dirname, "public");

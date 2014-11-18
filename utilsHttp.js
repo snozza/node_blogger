@@ -5,11 +5,11 @@ var path = require('path')
 var utilsHttp = this;
 var Chuck = require('./chuck')
 
-utilsHttp.chuckJoke = function () {
-  return new Chuck().random(function(err, joke) {
-    return alert(err ? err.message : joke)
-  });
-};
+// utilsHttp.chuckJoke = function () {
+//   return new Chuck().random(function(err, joke) {
+//     return alert(err ? err.message : joke)
+//   });
+// };
 
 utilsHttp.defaultViews = path.join(__dirname, "views")
 

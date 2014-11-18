@@ -12,7 +12,9 @@
 
 <body>
   <section id='container'>
-      <section id='blog_header'> </section>
+      <section id='blog_header'> 
+      <p></p>
+      </section>
         <article class='post_container' >
           <h1>Listing posts</h1>
             <table>
@@ -54,6 +56,11 @@
           this.submit();
         };
       });
+
+      setInterval(function() {
+        $('#blog_header p').load('http://localhost:9292/chuck')
+      }, 5000);
+
     });
     </script>
 

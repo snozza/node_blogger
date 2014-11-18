@@ -1,4 +1,4 @@
-#!/usr/bin/env coffee
+#!/usr/bin/env node
 Chuck = require ('../main')
 joke = new Chuck()
 joke.random(function(err, joke) {

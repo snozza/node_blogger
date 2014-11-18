@@ -3,11 +3,23 @@ var utils = require('util');
 var utilsHttp = require('./utilsHttp');
 var Router = require('./router');
 var DataBase = require('./mockDB');
-
+var Chuck = require('./chuck')
 
 var blog = new DataBase();
 var router = new Router();
 
+
+
+// var runChuck = function(response) {
+//   return new Chuck().random(function (err, joke) {
+//     return response.end(err ? err.message : joke);
+//   });
+// }
+router.get('^/chuck/?$', function(req, res) {
+  return new Chuck().random(function(err, joke) {
+    return res.end(err ? err.message : joke)
+  })
+});
 
 router.get('^/posts/?$', function(req, res) {
   var options = {posts: blog.posts()};

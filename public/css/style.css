@@ -10,7 +10,6 @@ html, body {
 }
 
 #container{      
-    white-space: nowrap;
     width: 90%;
     height: 100%;
     margin-left: auto;
@@ -46,5 +45,13 @@ html, body {
     height: 30%;
     margin-left: auto;
     margin-right: auto;
-}  
+}
+
+#blog_header p {
+    background-color: yellow;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
 

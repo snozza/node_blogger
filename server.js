@@ -8,13 +8,6 @@ var Chuck = require('./chuck')
 var blog = new DataBase();
 var router = new Router();
 
-
-
-// var runChuck = function(response) {
-//   return new Chuck().random(function (err, joke) {
-//     return response.end(err ? err.message : joke);
-//   });
-// }
 router.get('^/chuck/?$', function(req, res) {
   return new Chuck().random(function(err, joke) {
     return res.end(err ? err.message : joke)

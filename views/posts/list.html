@@ -13,7 +13,8 @@
 <body>
   <section id='container'>
       <section id='blog_header'> 
-      <p></p>
+      <p id='chuck'></p><br><br><br>
+      <article id='test'></article>
       </section>
         <article class='post_container' >
           <h1>Listing posts</h1>
@@ -58,9 +59,25 @@
       });
 
       setInterval(function() {
-        $('#blog_header p').load('http://localhost:9292/chuck')
-      }, 5000);
+        $('#chuck').fadeOut('slow', function() {
+          $(this).load('http://localhost:9292/chuck').fadeIn('slow');
+      })}, 7000);
 
+      (function wikiGetter() {
+        $.ajax({
+          url: "http://en.wikipedia.org//w/api.php?action=query&prop=extracts&format=json&exsentences=4&exlimit=1&exintro=&exsectionformat=plain&titles=Berlin",
+          contentType: "application/json; charset=utf-8",
+          type: 'GET',
+          dataType: 'jsonp',
+          success: function(data) {
+            $.each(data.query.pages, function(index, page) {
+              console.log(page.extract);
+              $('#test').html(page.extract);
+
+            });
+          }
+        });
+      }())
     });
     </script>
 

@@ -15,7 +15,7 @@ This was a mini novelty project to make an incredibly basic node blogging platfo
 
 ### Learning Outcomes
 
-I largely learned the intricacies of node.js sans frameworks like Express. This was quite beneficial for future projects. It was also quite fun to play around with a novelty database of quotes and set up the server to get a quote at set inetervals.
+I largely learned the intricacies of node.js sans frameworks like Express. This was quite beneficial for future projects. It was also quite fun to play around with a novelty database of quotes and set up the server to get a quote at set intervals.
 
 
 ### To-do List

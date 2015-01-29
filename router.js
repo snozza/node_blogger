@@ -35,8 +35,7 @@ Router.prototype.transmit = function(req, res) {
     var cBack = routes[i][1];  
     var m = route.exec(pathname);  
     if (m) {
-      console.log(m)
-      console.log(m.slice(1));
+      console.log(cBack.toString())
       cBack(req, res, m.slice(1));
       return;
     }

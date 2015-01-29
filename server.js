@@ -7,9 +7,10 @@ var Chuck = require('./chuck')
 
 var blog = new DataBase();
 var router = new Router();
+var chuck = new Chuck();
 
 router.get('^/chuck/?$', function(req, res) {
-  return new Chuck().random(function(err, joke) {
+  return chuck.random(function(err, joke) {
     return res.end(err ? err.message : joke)
   })
 });
@@ -74,6 +75,7 @@ router.post('^/posts/(\\d+)/edit', function(req, res, params) {
 
 var server = http.createServer(function(req, res) {
   router.transmit(req, res);
-}).listen(9292);
+}).listen(9292, function() {
+    console.log("This guy is listening on http://127.0.0.1:9292");
+  })
 
-console.log("This guy is listening on http://127.0.0.1:9292");

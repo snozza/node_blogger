@@ -5,22 +5,18 @@ var path = require('path')
 var utilsHttp = this;
 var Chuck = require('./chuck')
 
-// utilsHttp.chuckJoke = function () {
-//   return new Chuck().random(function(err, joke) {
-//     return alert(err ? err.message : joke)
-//   });
-// };
-
 utilsHttp.defaultViews = path.join(__dirname, "views")
 
 utilsHttp.renderHtml = function(view, res, options, viewsDir) {
+  _this = this
   viewsDir = viewsDir || utilsHttp.defaultViews;
   var filepath = path.join(viewsDir, view);
   fs.readFile(filepath, 'utf8', function(error, view) {
-    if(error) console.log(error);
-    var html = ejs.render(view, options);
-    res.writeHead(200, {'Content-type': 'text/html'})
-    res.end(html);
+    if(error) this.error404(res);
+    else
+      var html = ejs.render(view, options);
+      res.writeHead(200, {'Content-type': 'text/html'})
+      res.end(html);
   });
 }
 

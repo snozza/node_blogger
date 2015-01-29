@@ -43,15 +43,12 @@ router.post('^/posts/?$', function(req, res) {
   });
 });
 
-// DELETE
 router.post('^/posts/(\\d+)/delete/?$', function(req, res, params) {
   var id = params[0];
   if (blog.get(id)) blog.remove(id);
   utilsHttp.redirect('/posts', res);
 });
 
-
-// UPDATE FORM
 router.get('^/posts/(\\d+)/edit', function(req, res, params) {
   var post = blog.get(params[0]);
   if (!post) utilsHttp.error404(res);

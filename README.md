@@ -1,8 +1,6 @@
 Node_Blogger (with Chuck Norris API Wrapper)
 ========================
 
-## Node_Blogger
-
 ### Introduction
 
 This was a mini novelty project to make an incredibly basic node blogging platform. The goal was actually to learn about routing and related node server functionalities without using any framework. To spice up the project a little, I wrote a little API wrapper for the International Chuck Norris DataBase. This supplied a new chuck norris quote every 5 seconds via the use of the wrapper and an AJX request.
